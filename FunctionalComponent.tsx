@@ -65,30 +65,32 @@ function Stopwatch(props: StopwatchProps) {
 					>
 						stop
 					</button>
-					{secondsElapsed !== 0 && (
-						<>
-							<button
-								type="button"
-								onClick={handleLapClick}
-							>
-								lap
-							</button>
-							<button
-								type="button" 
-								onClick={handleResetClick}
-							>
-								reset
-							</button>
-						</>
-					)}
+					{secondsElapsed !== 0 &&
+						<button
+							type="button"
+							onClick={handleLapClick}
+						>
+							lap
+						</button>
+					}
 				</> :
-				<button
-					type="button"
-					className="start-btn"
-					onClick={handleStartClick}
-				>
-					start
-				</button>
+				<>
+					<button
+						type="button"
+						className="start-btn"
+						onClick={handleStartClick}
+					>
+						start
+					</button>
+					{secondsElapsed !== 0 &&
+						<button
+							type="button" 
+							onClick={handleResetClick}
+						>
+							reset
+						</button>
+					}
+				</>
 			}
 			<div className="stopwatch-laps">
 				{ laps.map((lap, i) => <Lap index={i+1} lap={lap} onDelete={handleDeleteClick(i)} />) }
